@@ -34,12 +34,15 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'listings.apps.ListingsConfig',
     'realtors.apps.RealtorsConfig',
+    'accounts.apps.AccountsConfig',
+    'contacts.apps.ContactsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -79,9 +82,9 @@ WSGI_APPLICATION = 'btre.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'btredb',
+        'NAME': 'btre',
         'USER':'postgres',
-        'PASSWORD':'muny0l3cl41r3',
+        'PASSWORD':'',
         'HOST':'localhost'
     }
 }
@@ -132,3 +135,19 @@ STATICFILES_DIRS=[
 #media folder settings
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
+
+#messages
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS={
+    messages.ERROR: 'danger'
+}
+#EMAIL CONFIG
+EMAIL_HOST ='smtp.gmail.com'
+EMAIL_PORT=587
+EMAIL_HOST_USER='munyolec@gmail.com'
+EMAIL_HOST_PASSWORD='61321200'
+EMAIL_USE_TLS=True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_FROM= EMAIL_HOST_USER
+EMAIL_SUBJECT_PREFIX = '[Project] '
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
